@@ -287,8 +287,8 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
           return;
         }
 
-        const cx =
-          paddingRight + (i * (width - paddingRight)) / dataset.data.length;
+        const chunks = dataset.data.length == 1 ? 1 : dataset.data.length - 1;
+        const cx = paddingRight + (i * (width - paddingRight)) / chunks - 5;
 
         const cy =
           ((baseHeight - this.calcHeight(x, datas, height)) / 4) * 3 +
