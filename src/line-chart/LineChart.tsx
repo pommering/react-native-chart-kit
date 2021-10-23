@@ -568,9 +568,10 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
           points={
             dataset.data
               .map((d, i) => {
+                const chunks =
+                  dataset.data.length == 1 ? 1 : dataset.data.length - 1;
                 const x =
-                  paddingRight +
-                  (i * (width - paddingRight)) / dataset.data.length;
+                  paddingRight + (i * (width - paddingRight)) / chunks - 5;
 
                 const y =
                   ((baseHeight - this.calcHeight(d, datas, height)) / 4) * 3 +
@@ -670,7 +671,7 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
 
     const chunks = dataset.data.length == 1 ? 1 : dataset.data.length - 1;
     const x = (i: number) =>
-      Math.floor(paddingRight + (i * (width - paddingRight)) / chunks);
+      Math.floor(paddingRight + (i * (width - paddingRight)) / chunks - 5);
 
     const baseHeight = this.calcBaseHeight(datas, height);
 
@@ -752,9 +753,10 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
           data
         }) +
         ` L${paddingRight +
-          ((width - paddingRight) / dataset.data.length) *
-            (dataset.data.length - 1)},${(height / 4) * 3 +
-          paddingTop} L${paddingRight},${(height / 4) * 3 + paddingTop} Z`;
+          ((width - paddingRight) / dataset.data.length) * dataset.data.length -
+          5},${(height / 4) * 3 + paddingTop} L${paddingRight},${(height / 4) *
+          3 +
+          paddingTop} Z`;
 
       return (
         <Path
