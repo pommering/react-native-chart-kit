@@ -623,8 +623,8 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
     data.forEach((dataset, index) => {
       const points = dataset.data.map((d, i) => {
         if (d === null) return lastPoint;
-        const x =
-          (i * (width - paddingRight)) / dataset.data.length + paddingRight;
+        const chunks = dataset.data.length == 1 ? 1 : dataset.data.length - 1;
+        const x = (i * (width - paddingRight)) / chunks + paddingRight - 5;
         const y =
           ((baseHeight - this.calcHeight(d, datas, height)) / 4) * 3 +
           paddingTop;
@@ -668,10 +668,9 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
 
     const datas = this.getDatas(data);
 
+    const chunks = dataset.data.length == 1 ? 1 : dataset.data.length - 1;
     const x = (i: number) =>
-      Math.floor(
-        paddingRight + (i * (width - paddingRight)) / dataset.data.length
-      );
+      Math.floor(paddingRight + (i * (width - paddingRight)) / chunks);
 
     const baseHeight = this.calcBaseHeight(datas, height);
 
