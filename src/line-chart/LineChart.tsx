@@ -754,7 +754,8 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
         }) +
         ` L${paddingRight +
           ((width - paddingRight) / dataset.data.length) * dataset.data.length -
-          5},${(height / 4) * 3 + paddingTop} L${paddingRight},${(height / 4) *
+          5},${(height / 4) * 3 + paddingTop} L${paddingRight - 5},${(height /
+          4) *
           3 +
           paddingTop} Z`;
 
