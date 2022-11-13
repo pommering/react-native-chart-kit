@@ -671,7 +671,7 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
 
     const chunks = dataset.data.length == 1 ? 1 : dataset.data.length - 1;
     const x = (i: number) =>
-      Math.floor(paddingRight + (i * (width - paddingRight)) / chunks - 5);
+      Math.floor(paddingRight + (i * (width - paddingRight)) / chunks - 4);
 
     const baseHeight = this.calcBaseHeight(datas, height);
 
